@@ -1,14 +1,14 @@
 const Router = require('express');
-const router = new Router();
-const controller = require('../controllers/FactController');
+const factRouter = new Router();
+const factController = require('../controllers/FactController');
 //const {check} = require('express-validator');
 
-router.post('/create', controller.create);
-//router.get('/getFact', controller.getFact);
+factRouter.post('/create', factController.create);
+factRouter.get('/getFact', factController.getFact);
 //router.post('/verify', controller.verify);
 //router.delete('/delete', roleMiddleware(["Админ"]), controller.delete);
 
-module.exports = router;
+module.exports = factRouter;
 
 /* 
 Валидация создания

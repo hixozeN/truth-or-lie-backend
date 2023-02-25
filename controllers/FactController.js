@@ -16,7 +16,8 @@ class FactController {
 
   async getFact(req, res) {
     try {
-
+      const facts = await Fact.find();
+      return res.json(facts);
     } catch (e) {
       console.log(e);
     }
@@ -31,4 +32,4 @@ class FactController {
   }
 };
 
-exports.module = new FactController();
+module.exports = new FactController();

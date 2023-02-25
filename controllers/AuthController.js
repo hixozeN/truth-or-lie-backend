@@ -10,7 +10,7 @@ const generateAccessToken = (id, roles) => {
     id,
     roles
   };
-  return jwt.sign(payload, secret, {expiresIn: "8760h"}); // Аксесс токен на год!!! Рефреш-токен не делал, поменять после разработки!!!
+  return jwt.sign(payload, secret, {expiresIn: "8760h"}); // Аксесс токен на год!!! Рефреш-токен не делал, поменять после разработки refreshToken!!!
 };
 
 class AuthController {
