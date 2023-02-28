@@ -23,6 +23,16 @@ class FactController {
     }
   }
 
+  async getRandomFact(req, res) {
+    try {
+      const facts = await Fact.find();
+      let randomedNumber = Math.floor(Math.random() * facts.length);
+      return res.json(facts[randomedNumber]);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   async delete(req, res) {
     try {
 

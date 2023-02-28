@@ -5,6 +5,7 @@ const factController = require('../controllers/FactController');
 
 factRouter.post('/create', factController.create);
 factRouter.get('/getFact', factController.getFact);
+factRouter.get('/getRandomFact', factController.getRandomFact);
 //router.post('/verify', controller.verify);
 //router.delete('/delete', roleMiddleware(["Админ"]), controller.delete);
 
