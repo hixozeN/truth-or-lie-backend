@@ -1,6 +1,7 @@
 const Fact = require('../models/Facts');
 const {validationResult} = require('express-validator');
 const {secret} = require('../config');
+const random = require('crypto-random');
 
 class FactController {
   async create(req, res) {
@@ -26,7 +27,7 @@ class FactController {
   async getRandomFact(req, res) {
     try {
       const facts = await Fact.find();
-      let randomedNumber = Math.floor(Math.random() * facts.length);
+      let randomedNumber = Math.floor(random.value() * facts.length);
       return res.json(facts[randomedNumber]);
     } catch (e) {
       console.log(e);
