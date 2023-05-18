@@ -6,15 +6,16 @@ const Fact = new Schema(
       type: String,
       required: true,
       minlength: [10, 'text'],
-      maxlength: [30, 'text'],
+      maxlength: [360, 'text'],
     },
     answer: {
       type: String,
       required: true,
       minlength: [10, 'text'],
-      maxlength: [30, 'text'],
+      maxlength: [425, 'text'],
     },
     isTrue: { type: Boolean, required: true },
+    isVerified: { type: Boolean, default: true },
     owner: {
       type: Schema.Types.ObjectId,
       required: true,

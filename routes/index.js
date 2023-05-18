@@ -6,6 +6,9 @@ const NotFound = require('../utils/errorsConstructor/NotFound');
 // Роутеры пользователей
 router.use('/users', require('./userRouter'));
 
+// Роутеры фактов
+router.use('/facts', require('./factRouter'));
+
 // Авторизация и регистрация
 router.use('/login', login);
 router.use('/register', createUser);
