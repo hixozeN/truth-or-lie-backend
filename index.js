@@ -1,33 +1,39 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const authRouter = require('./routes/authRouter');
-const factRouter = require('./routes/factRouter');
-const url = 'mongodb://root:Staples_123@fotrigooguem.beget.app/project';
-const PORT = process.env.PORT || 3000
+// Роуты приложения
+const router = require('./routes');
+// Извлекаем данные из конфига
+const { PORT, MONGO_DB } = require('./utils/config');
+// Централизованный обработчик ошибок
+const responseHandler = require('./middleware/responseHandler');
 
 const app = express();
+app.use(express.json());
 
 // CORS politicy
 app.use(cors({
-  origin: '*'
+  origin: '*',
 }));
 app.use(cors({
-  methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
+  methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
 }));
 
-app.use(express.json());
-app.use('/auth', authRouter);
-app.use('/facts', factRouter);
+// MONGO
+mongoose.set('strictQuery', false);
+mongoose.connect(MONGO_DB, {
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+  autoIndex: true, // make this also true
+});
 
-const start = async () => {
-  try {
-    await mongoose.connect(url)
-    app.listen(PORT, () => console.log('Server started on port', PORT));
-  } catch (e) {
-    console.log(e);
-  }
-}
+// Routers
+app.get('/', (req, res) => { res.send('<h1>Hello world</h1>'); });
+app.use(router);
 
-start();
+// ErrorsHandler
+app.use(responseHandler);
 
+// eslint-disable-next-line no-console
+app.listen(PORT, () => console.log('Server started on port:', PORT));
