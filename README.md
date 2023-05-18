@@ -4,8 +4,8 @@
 #### Авторизация
 | Действие            | Метод | EndPoint     | Body                  | Защита |
 |---------------------|-------|--------------|-----------------------|--------|
-| Регистрация         | POST  | /users/      | name, password, email |        |
-| Авторизоваться      | POST  | /users/login | password, email       |        |
+| Регистрация         | POST  | /register    | name, password, email |        |
+| Авторизоваться      | POST  | /login       | password, email       |        |
 #### Пользователи
 
 | Действие                    | Метод | EndPoint     | Body                  | Защита |
