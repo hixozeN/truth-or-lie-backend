@@ -7,9 +7,11 @@ const {
   updateUser,
   updateUserById,
   deleteUserById,
+  getCurrentUser,
 } = require('../controllers/userController');
 
 userRouter.get('/', auth, getAllUsers);
+userRouter.get('/me', auth, getCurrentUser);
 userRouter.get('/:userId', auth, getUser);
 userRouter.patch('/', auth, updateUser);
 

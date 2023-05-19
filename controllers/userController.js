@@ -43,6 +43,12 @@ const getAllUsers = (req, res, next) => {
     .catch((err) => next(err));
 };
 
+const getCurrentUser = (req, res, next) => {
+  User.findById(req.user._id)
+    .then((user) => res.send({ data: user }))
+    .catch((err) => next(err));
+};
+
 const getUser = (req, res, next) => {
   User.findById(req.params.userId)
     .orFail(new Error('Пользватель с таким ID не найден.'))
@@ -126,6 +132,7 @@ const login = (req, res, next) => {
 module.exports = {
   createUser,
   getAllUsers,
+  getCurrentUser,
   getUser,
   updateUser,
   login,
