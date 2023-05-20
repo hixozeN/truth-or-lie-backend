@@ -21,6 +21,7 @@ const User = new Schema(
       },
     },
     roles: [{ type: String, ref: 'Role' }],
+    rating: [{ type: Number, default: 0 }],
     password: {
       type: String,
       required: [true, 'Поле "password" не может быть пустым'],
